@@ -1,78 +1,40 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
+import { Home, User, Cog } from "lucide-react"; // Use lucide-react for consistent icons
+import gradientbg from "../assets/gradientBg.png";
 
 export default function Dashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const navItems = [
+    { name: "Dashboard", href: "/", icon: Home },
+    { name: "Profile", href: "/profile", icon: User },
+    { name: "Settings", href: "/settings", icon: Cog },
+  ];
+
   return (
-    <div className="min-h-screen flex bg-gray-100">
+    <div className="min-h-screen flex">
       {/* Sidebar */}
       <aside
-        className={`bg-white shadow-lg w-64 fixed h-full overflow-y-auto transition-transform transform ${
+        className={`bg-[#b0cf23] shadow-lg w-64 fixed h-full overflow-y-auto transition-transform transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
         <div className="p-4">
-          <h2 className="text-2xl font-bold text-gray-800">Dashboard</h2>
+          <h2 className="text-2xl font-bold text-black">Dashboard</h2>
         </div>
-        <nav className="mt-4 space-y-2">
-          <a
-            href="/"
-            className="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-100"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+
+        <nav className="mt-6 space-y-2">
+          {navItems.map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              className="flex items-center px-6 py-3 text-white hover:bg-blue-100 hover:text-[#222222] transition-all rounded-lg"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-            <span className="mx-3">Dashboard</span>
-          </a>
-          <a
-            href="/hi"
-            className="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-100"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-            <span className="mx-3">Dashboard</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-100"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-            <span className="mx-3">Dashboard</span>
-          </a>
+              <item.icon className="w-5 h-5 text-black" />
+              <span className="mx-3 font-medium">{item.name}</span>
+            </a>
+          ))}
         </nav>
       </aside>
 
@@ -80,7 +42,12 @@ export default function Dashboard() {
       <div className="md:ml-64 w-full">
         <TopNavigation onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
 
-        <main className="p-6">
+        <main
+          className="p-6 bg-cover bg-center h-[92vh]"
+          style={{
+            background: "linear-gradient(rgb(241, 244, 253) 0px, #D7E5A6 100%)",
+          }}
+        >
           <Outlet />
         </main>
       </div>
@@ -90,7 +57,7 @@ export default function Dashboard() {
 
 function TopNavigation({ onMenuToggle }) {
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-10">
+    <header className="bg-white shadow-sm sticky top-0 z-10 h-[8vh]">
       <div className="flex items-center justify-between px-6 py-4">
         <button
           className="md:hidden p-2 text-gray-700"
@@ -116,7 +83,7 @@ function TopNavigation({ onMenuToggle }) {
           <input
             type="search"
             placeholder="Search"
-            className="w-full bg-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
 

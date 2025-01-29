@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route element={<Dashboard/>}>
           <Route path="/" element={<App />} />
-          <Route path="/hi" element={<p>Hi from Public Layout!</p>} />
+          <Route path="/profile" element={<p>Hi from Public Layout!</p>} />
         </Route>
         <Route element={<AuthLayout/>}>
           <Route path="/signin" element={<SignIn/>} />
