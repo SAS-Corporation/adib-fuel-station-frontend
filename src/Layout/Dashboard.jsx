@@ -9,19 +9,19 @@ export default function Dashboard() {
   const navItems = [
     { name: "Dashboard", href: "/", icon: Home },
     { name: "Profile", href: "/profile", icon: User },
-    { name: "Settings", href: "/settings", icon: Cog },
+    { name: "Nozzle Configuration", href: "/nozzle-configuration", icon: Cog },
   ];
 
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
       <aside
-        className={`bg-[#b0cf23] shadow-lg w-64 fixed h-full overflow-y-auto transition-transform transform ${
+        className={`bg-[#fbe9d3] shadow-lg w-64 fixed h-full overflow-y-auto transition-transform transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
         <div className="p-4">
-          <h2 className="text-2xl font-bold text-black">Dashboard</h2>
+          <h2 className="text-2xl font-bold text-[#c30505]">ADIB  Fuel Station</h2>
         </div>
 
         <nav className="mt-6 space-y-2">
@@ -29,9 +29,9 @@ export default function Dashboard() {
             <a
               key={index}
               href={item.href}
-              className="flex items-center px-6 py-3 text-white hover:bg-blue-100 hover:text-[#222222] transition-all rounded-lg"
+              className="flex items-center px-6 py-3 text-[#1e1b1b] hover:bg-blue-100 hover:text-[#222222] transition-all"
             >
-              <item.icon className="w-5 h-5 text-black" />
+              <item.icon className="w-5 h-5 text-[#c30505]" />
               <span className="mx-3 font-medium">{item.name}</span>
             </a>
           ))}
@@ -45,7 +45,7 @@ export default function Dashboard() {
         <main
           className="p-6 bg-cover bg-center h-[92vh]"
           style={{
-            background: "linear-gradient(rgb(241, 244, 253) 0px, #D7E5A6 100%)",
+            // background: "linear-gradient(rgb(241, 244, 253) 0px, #D7E5A6 100%)",
           }}
         >
           <Outlet />
@@ -55,9 +55,37 @@ export default function Dashboard() {
   );
 }
 
+// import {
+//   ResizableHandle,
+//   ResizablePanel,
+//   ResizablePanelGroup,
+// } from "@/components/ui/resizable"
+
+// export default function Dashboard() {
+//   return (
+//     <ResizablePanelGroup
+//       direction="horizontal"
+//       className="rounded-lg border"
+//     >
+//       <ResizablePanel defaultSize={20}>
+//         <div className="flex items-center justify-center p-6">
+//           <span className="font-semibold">One</span>
+//         </div>
+//       </ResizablePanel>
+//       <ResizableHandle />
+//       <ResizablePanel defaultSize={80}>
+//         <div className="flex items-center justify-center p-6">
+//           <span className="font-semibold">One</span>
+//         </div>
+//       </ResizablePanel>
+//     </ResizablePanelGroup>
+//   )
+// }
+
+
 function TopNavigation({ onMenuToggle }) {
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-10 h-[8vh]">
+    <header className="bg-[#fff] shadow-sm sticky top-0 z-10">
       <div className="flex items-center justify-between px-6 py-4">
         <button
           className="md:hidden p-2 text-gray-700"
@@ -102,7 +130,7 @@ function TopNavigation({ onMenuToggle }) {
 
 function StatCard({ title, value, trend }) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <div className="bg-[	#1e1b1b] p-6 rounded-lg shadow hover:shadow-md transition">
       <h3 className="text-gray-500 text-sm">{title}</h3>
       <p className="text-2xl font-bold mt-2">{value}</p>
       <div className="text-green-500 flex items-center mt-2">
@@ -114,7 +142,7 @@ function StatCard({ title, value, trend }) {
 
 function ChartSection({ title }) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <div className="bg-[	#1e1b1b] p-6 rounded-lg shadow hover:shadow-md transition">
       <h3 className="text-lg font-semibold mb-4">{title}</h3>
       <div className="h-64 bg-gray-50 flex items-center justify-center text-gray-400">
         Chart Placeholder
@@ -125,7 +153,7 @@ function ChartSection({ title }) {
 
 function RecentActivity() {
   return (
-    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <div className="bg-[	#1e1b1b] p-6 rounded-lg shadow hover:shadow-md transition">
       <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
       <ul className="space-y-4">
         <li className="text-gray-600">Sample Activity 1</li>
@@ -148,7 +176,7 @@ function RecentOrders() {
   ];
 
   return (
-    <div className="mt-6 bg-white rounded-lg shadow hover:shadow-md transition">
+    <div className="mt-6 bg-[	#1e1b1b] rounded-lg shadow hover:shadow-md transition">
       <div className="p-6">
         <h3 className="text-lg font-semibold mb-4">Recent Orders</h3>
         <div className="overflow-x-auto">

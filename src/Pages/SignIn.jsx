@@ -26,7 +26,7 @@ const SignIn = ({ className, ...props }) => {
   return (
     <div
       className={cn(
-        "flex flex-col gap-6 md:w-3/12 md:mx-auto mx-3 ",
+        "flex flex-col gap-6 xl:w-3/12 md:mx-auto mx-3 ",
         className
       )}
       {...props}
